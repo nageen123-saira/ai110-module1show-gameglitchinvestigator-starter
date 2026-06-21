@@ -23,11 +23,6 @@ It wrote the code, ran away, and now the game is unplayable.
    - Run `pytest` in your terminal.
    - Keep fixing until all tests pass!
 
-## 📝 Document Your Experience
-
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
 
 
 ## 📝 Document Your Experience
@@ -81,8 +76,3 @@ tests/test_game_logic.py::test_valid_input_is_accepted PASSED                   
 
 
 ```
-
-
-## 🚀 Stretch Features
-
-- [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
