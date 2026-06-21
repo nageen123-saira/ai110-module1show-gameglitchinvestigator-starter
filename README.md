@@ -29,25 +29,59 @@ It wrote the code, ran away, and now the game is unplayable.
 - [ ] Detail which bugs you found.
 - [ ] Explain what fixes you applied.
 
+
+## 📝 Document Your Experience
+
+- [x] Describe the game's purpose.
+A number guessing game where the player guesses a secret 
+number between 1-100. Hints guide the player higher or lower.
+
+- [x] Detail which bugs you found.
+1. Hints were flipped — Too Low said "Go LOWER" 
+2. Score went negative on wrong guesses
+3. Invalid input like "abc" cost an attempt
+4. New Game didn't reset score/history/status
+5. Secret number converted to string on even attempts
+
+- [x] Explain what fixes you applied.
+Fixed hint messages in check_guess, removed score penalty 
+for wrong guesses, moved attempt counter after validation, 
+reset all session state on New Game, removed str() conversion.
+
+
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Game starts, secret number is generated (e.g. 42)
+2. User guesses 20 → hint says "Go HIGHER"
+3. User guesses 80 → hint says "Go LOWER" 
+4. User guesses 42 → "Correct! You won!"
+5. Final score = 80 points (won in 3 guesses)
+6. New Game clicked → everything resets to zero
 
-**Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
+
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
+#  pytest output here, e.g.:
+#python -m pytest tests/ -v
 # ========================= X passed in 0.XXs =========================
+tests/test_game_logic.py::test_too_high_says_go_lower PASSED                                                                     [ 14%]
+tests/test_game_logic.py::test_too_low_says_go_higher PASSED                                                                     [ 28%]
+tests/test_game_logic.py::test_correct_guess_wins PASSED                                                                         [ 42%]
+tests/test_game_logic.py::test_wrong_guess_does_not_change_score PASSED                                                          [ 57%]
+tests/test_game_logic.py::test_win_adds_points_to_score PASSED                                                                   [ 71%]
+tests/test_game_logic.py::test_invalid_input_is_rejected PASSED                                                                  [ 85%]
+tests/test_game_logic.py::test_valid_input_is_accepted PASSED                                                                    [100%]
+
+========================================= 7 passed in 0.06s ==========================================================
+
+
+
 ```
+
 
 ## 🚀 Stretch Features
 
